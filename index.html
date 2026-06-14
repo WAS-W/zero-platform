@@ -1,0 +1,663 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>Zero Platform</title>
+	<link rel="icon" href="icon.PNG" type="image/x-icon">
+	<meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Zero Platform | Connect with your loved ones safely and comfortably ">
+    <meta name="author" content="Sohyp Khaled">
+	<meta name="copyright" content="Sohyp Khaled 2026" />
+	<meta http-equiv="website" content="text/html">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+	<style>
+	* {
+	    margin: 0;
+		padding: 0;
+		font-family: Arial;
+		font-weight: bold;
+	}
+	body {
+	    background: #1a1a1a;
+		overflow-x: hidden;
+		width: 100%;
+		height: 100%;
+	}
+	.header-zero-logo {
+	    width: 6%;
+		height: 95%;
+		border-radius: 10px;
+		border: none;
+		
+	}
+	h3 {
+	    color: purple;
+		margin-left: 25px;
+		font-weight: 800;
+		font-family: Arial;
+		font-size: 40px;
+	}
+	.search-one {
+	    width: 65%;
+		height: 75%;
+		border: 1px dashed beige;
+		border-radius: 20px;
+		color: skyblue;
+        outline: #300324;
+		padding: 5px;
+        margin-left: 20px;
+		margin-top: 3px;
+		background: #1b1b1b;
+		position: absolute;
+		top: 3px;
+		right: 10px;
+	}
+	.add-chat-friend {
+	    width: 30px;
+		height: 30px;
+		border: 2px solid beige;
+		border-radius: 30%;
+		background: seagreen;
+		color: white;
+		font-size: 20px;
+		cursor: pointer;
+		transition: .5s
+	}
+	.add-chat-friend:hover {
+	    transform: scale(1.1);
+		box-shadow: 0 0 8px white;
+	}
+	header {
+	    width: 100%;
+		height: 35px;
+		background: rgba(0,0,0,0.5);
+		border: 1px solid lightblue;
+		border-left: transparent;
+		border-radius: 5px;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 5px;
+		padding-bottom: 8px;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-direction: row;
+		position: sticky;
+		top: 0;
+		z-index: 9999999999;
+	}
+	.add-someone , .login {
+	    width: 35%;
+		height: 40%;
+		border: 2px solid rgba(225,225,225,.5);
+		border-radius: 10px;
+		background: linear-gradient(-280deg,#0a144d,#300324);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: scale(.8) translate(-50%,-50%);
+		padding: 10px;
+		box-shadow: 0 0 15px #0a144d;
+		opacity: 0;
+		pointer-events: none;
+		transition: 1s;
+	}
+	.some  {
+	    width: 35%;
+		height: 40%;
+		border: 2px solid rgba(225,225,225,.5);
+		border-radius: 10px;
+		background: linear-gradient(-280deg,#0a144d,#300324);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: scale(1) translate(-50%,-50%);
+		padding: 10px;
+		box-shadow: 0 0 15px #0a144d;
+		opacity: 0;
+		pointer-events: none;
+		transition: 1s;
+		z-index: 9999999;
+	}
+	h2 {
+	    color: white;
+		margin-left: 7px;
+		margin-bottom: 10px;
+	}
+	.name {
+	    color: white;
+		margin-left: 7px;
+		font-size: 20px;
+	}
+	.id {
+	    color: white;
+		margin-left: 7px;
+		font-size: 20px;
+	}
+	#name, #id {
+	    width: 38%;
+		height: 15%;
+		border: 1px dashed beige;
+		border-radius: 20px;
+		color: cyan;
+        outline: #300324;
+		padding: 8px;
+        margin-left: 20px;
+		margin-top: 5px;
+		background: #1b1b1b;
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+	.login-btn {
+	    width: 20%;
+		height: 10%;
+		border: 1px solid cyan;
+		color: purple;
+		border-radius: 10px;
+		box-shadow: 0 0 5px #eee;
+		margin-top: 15px;
+		background: #1a1a1a;
+		font-size: 18px;
+		transition: .4s;
+	}
+	.login-btn:hover {
+	    transform: scale(1.1);
+		cursor: pointer;
+	}
+	#onename {
+	    width: 38%;
+		height: 15%;
+		border: 1px dashed beige;
+		border-radius: 20px;
+		color: cyan;
+        outline: #300324;
+		padding: 8px;
+        margin-left: 20px;
+		margin-top: 5px;
+		background: #1b1b1b;
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+	#oneid {
+	    width: 38%;
+		height: 15%;
+		border: 1px dashed beige;
+		border-radius: 20px;
+		color: cyan;
+        outline: #300324;
+		padding: 8px;
+        margin-left: 20px;
+		margin-top: 5px;
+		background: #1b1b1b;
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+	.user-chat, .other-chat {
+	    width: 100%;
+		height: 10%;
+		border: 0 solid transparent;
+		border-bottom: 1px solid grey;
+		position: relative;
+		background: #1b1b1b;
+	}
+	.user-chat:hover , .other-chat:hover{
+	    background: #203324;
+		cursor: pointer;
+	}
+	.user-name {
+	    position: absolute;
+		top: 18px;
+		right: 50px;
+		color: white;
+		font-size: 20px;
+		margin-right: 10px;
+	}
+	.circle-photo {
+	    position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 40px;
+		height: 40px;
+		border: 2px solid grey;
+		border-radius: 50%;
+		background: #0a144d;
+		margin-top: 5px;
+	}
+	.your-chatting {
+	    width: 100%;
+		height: 100%;
+		background: #300329;
+		position: fixed;
+		bottom: 1px;
+		opacity: 1;
+		transform: translateX(1000px);
+		transition: 1s;
+		overflow-y: auto;
+		box-sizing: border-box;
+		padding-bottom: 10px;
+	}
+	.your-input-prompt {
+	    margin-bottom: 10px;
+		width: 90%;
+		background: rgba(225,225,225,.8);
+		-webckit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		position: absolute;
+		bottom: 3px;
+		height: 40px;
+		border: none;
+		border-radius: 15px;
+		color: black;
+		font-size: 18px;
+		padding: 10px;
+		transform: translateY(-60%);
+		margin-left: 5px;
+		z-index: 99999;
+		transition: .3s;
+	}
+	.your-input-prompt:hover {
+	    transform: translateY(-75%);
+		border: 1.5px solid #1a1a1a;
+		box-shadow: 5px 10px 5px #354324;
+	}
+	.messege-button {
+	    width: 8%;
+		height: 35px;
+		margin-bottom: 10px;
+		margin-left: 1%;
+		border: none;
+		border-radius: 20px;
+		margin: 3% 3px 10px 10px ;
+		background: linear-gradient(-280deg,#0a144d,#300324);
+		color: white;
+		position: absolute;
+		bottom: 3px;
+		right: 10px;
+		transform: translateY(-85%);
+		z-index: 99999;
+		transition: .4s;
+	}
+	.messege-button:hover {
+	    transform: translateY(-105%);
+		box-shadow: 5px 10px 5px rgb(13,62,72);
+	}
+	.message {
+	    max-width: 40%;
+	    background: linear-gradient(230deg,#0a144d,#376823);
+		color: white;
+		padding: 15px;
+		border: none;
+		border-radius: 1px 15px 15px;
+		position: relative;
+		left: 10px;
+		margin: 15px 5px;
+		word-wrap: break-word;
+	}
+	.back-button {
+	    position: absolute;
+		top: 50px;
+		right: 15px;
+		z-index: 100000;
+		border: 1px solid white;
+		border-radius: 10px;
+		width: 10%;
+		height: 5%;
+	    color: white;
+		background: #003636;
+		padding: 4px;
+	}
+	.message-cont {
+	    width: 100%;
+		height: 80%;
+		background: #301934;
+		border-top: .2px solid #00ffff;
+		border: transparent;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		font-size: 20px;
+		z-index: 9999;
+		position: relative;
+		top: 50px;
+		left: 0px;
+		opacity: 1;
+		transform: translateY(0);
+		transition: 1s;
+		overflow-y: auto;
+		box-sizing: border-box;
+		padding-bottom: 10px;
+	}
+	.premuim {
+	    background-color: #222;
+		color: #00ffff;
+		border: 2px dashed cyan;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 35%;
+		height: 40%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: scale(1) translate(-50%,-50%);
+		padding: 10px;
+		box-shadow: 0 0 15px cyan;
+		opacity: 0;
+		pointer-events: none;
+		z-index: 9999999;
+		font-size: 18px;
+		font-family: monospace , 'Consols';
+		transition: 1s;
+	}
+	.premuim h2 {
+	    position: absolute;
+		top: 20px;
+		font-size: 30px;
+		color: #00aaff;
+	}
+    .close {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #555;
+        border-radius: 50%;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #1a1a1a;
+		transition: .5s;
+		background: #ddd;
+    }
+    .close:hover {
+        transform: rotate(180deg);
+        background: #ff1111;
+		color: white;
+    }		
+	.explore , .backk {
+	    width: 40%;
+        height: 14%;
+        padding: 10px;
+        margin-top: 15px;
+		transition: .6s;
+	    color: #ff00aa;
+		background: #1a1a1a;
+		font-size: 20px;
+		border: 1px dashed #ff00aa;
+		border-radius: 10px;
+		display: inline;
+	}
+	.explore:hover , .backk:hover {
+	    cursor: pointer;
+		transform: scale(1.15);
+		box-shadow: 0 0 10px #ff0001;
+		font-size: 23px;
+	}
+	.subscribe {
+	    width: 40%;
+        height: 14%;
+        padding: 10px;
+        margin-top: 15px;
+		transition: .6s;
+	    color: #00ff01;
+		background: #1a1a1a;
+		font-size: 20px;
+		border: 1px dashed #00ff01;
+		border-radius: 10px;
+	}
+	.subscribe:hover {
+	    cursor: pointer;
+		transform: scale(1.15);
+		box-shadow: 0 0 10px #00ff01;
+		font-size: 23px;
+	}
+	.explorer { 
+	    background-color: #1a1a1a;
+		color: #0affff;
+		border: 2px dashed forestgreen;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 35%;
+		height: 40%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: scale(1) translate(-50%,-50%);
+		padding: 10px;
+		box-shadow: 0 0 15px purple;
+		opacity: 0;
+		pointer-events: none;
+		z-index: 9999999;
+		font-size: 20px;
+		font-family: monospace , 'Consols';
+		transition: 1s;
+	}
+	.close , .close1 , .close2 {
+	    position: absolute;
+		top: 10px;
+		right: 10px;
+		border: 1px solid;
+		color: #111;
+		background: #aaa;
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		transition: .4s;
+	}
+	.close3 {
+	    position: absolute;
+		top: 50px;
+		right: 10px;
+		border: 1px solid;
+		color: #111;
+		background: #aaa;
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		transition: .4s;
+		z-index: 9999999999999999999;
+	}
+	.close:hover , .close1:hover , .close2:hover , .close3:hover {
+	    transform: rotate(180deg);
+		color: #fff;
+		background: #ff0000;
+		border-radius: 50%;
+	}
+@media (min-width: 150px) and (max-width: 700px) and (min-height: 457px) and (max-height: 530px) {
+header { height: 65px; display: flex; flex-wrap: wrap; position: sticky; top: 0; z-index: 9999999999; padding-bottom: 5px;}
+.header-zero-logo { width: 40px; height: 30px; }
+header h3 { margin-left: 5px; font-size: 20px; }
+header .search-one { width: 99%; height: 45%; position: sticky; bottom: 10px; left: 3px;}
+.add-chat-friend {  position: fixed; top: 10px; right: 15px; width: 25px; height: 25px; text-align: center; }
+.circle-photo { width: 25px; height: 25px; margin-top: 2px;}
+.login , .some , .premuim , .explorer { width: 85%; height: 65%; position: fixed; }
+#onename, #oneid , #name , #id {
+	width: 60%;
+	height: 25px;
+	border: 1px dashed beige;
+	border-radius: 20px;
+	color: cyan;
+    outline: #300324;
+	padding: 4px;
+    margin-left: 20px;
+	margin-top: 5px;
+	background: #1b1b1b;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+.login-btn {
+	width: 25%;
+	height: 10%;
+	border: 1px solid cyan;
+	color: purple;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #eee;
+	margin-top: 15px;
+	background: #1a1a1a;
+	font-size: 15px;
+	transition: .4s;
+}
+.login-btn:hover {
+   transform: scale(1.1);
+	cursor: pointer;
+}
+.your-chatting {
+	    width: 100%;
+		height: 100%;
+		background: #300329;
+		border: 1px solid #00ffff;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		font-size: 20px;
+		z-index: 9999;
+		position: absolute;
+		bottom: 1px;
+		left: 1px;
+		opacity: 1;
+		transform: translateX(1000px);
+		transition: 1s;
+		overflow-y: auto;
+		box-sizing: border-box;
+		padding-bottom: 10px;
+	}
+	.your-input-prompt {
+	    margin-bottom: 10px;
+		width: 82%;
+		background: rgba(225,225,225,.8);
+		-webckit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		position: absolute;
+		bottom: 3px;
+		height: 40px;
+		border: none;
+		border-radius: 15px;
+		color: black;
+		font-size: 18px;
+		padding: 10px;
+		transform: translateY(-60%);
+		margin-left: 5px;
+		z-index: 99999;
+		transition: .3s;
+	}
+	.your-input-prompt:hover {
+	    transform: translateY(-75%);
+		border: 1.5px solid #1a1a1a;
+		box-shadow: 5px 10px 5px #354324;
+	}
+	.messege-button {
+	    width: 16%;
+		height: 35px;
+		margin-bottom: 10px;
+		margin-left: 1%;
+		border: none;
+		border-radius: 20px;
+		margin: 3% 1px 10px 10px ;
+		background: linear-gradient(-280deg,#0a144d,#300324);
+		color: white;
+		position: absolute;
+		bottom: 3px;
+		right: 10px;
+		transform: translateY(-85%);
+		z-index: 99999;
+		transition: .4s;
+	}
+	.messege-button:hover {
+	    transform: translateY(-105%);
+		box-shadow: 5px 10px 5px rgb(13,62,72);
+	}
+	.back-button {
+	    position: absolute;
+		top: 80px;
+		left: 15px;
+		border: 1px solid white;
+		border-radius: 10px;
+		width: 20%;
+		height: 5%;
+	    color: white;
+		background: #003636;
+		padding: 4px;
+	}
+	.message-cont {
+	    width: 100%;
+		height: 70%;
+		background: #301934;
+		border-top: .2px solid #00ffff;
+		border: transparent;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		font-size: 20px;
+		z-index: 9999;
+		position: relative;
+		top: 40px;
+		left: 0px;
+		opacity: 1;
+		transform: translateY(0);
+		transition: 1s;
+		overflow-y: auto;
+		box-sizing: border-box;
+		padding-bottom: 10px;
+	}
+}
+	</style>
+</head>
+<body>
+    <header>
+	    <img src='icon.PNG' alt='Zero Img' class='header-zero-logo'/>
+		<h3> Zero Platform <h3>
+		<input placeholder='ابحث بالاسم او ال اي دي' class='search-one' autocomplete='off'>
+		<button class='add-chat-friend'>+</button>
+	</header>
+	<div class='login'>
+	    <h2>Zero Platform</h2>
+		<label class='name' for='name'>الاسم</label>
+		<input id='name' autocomplete='off'>
+		<label class='id' for='id'>ال اي دي</label>
+		<input id='id' autocomplete='off'>
+		<button class='login-btn'>Sign In</button>
+	</div>
+	<div class='some'>
+	    <button class='close' onclick="document.querySelector('.some').setAttribute('style','pointer-events: none;opacity: 0;');document.body.style.pointerEvents = 'auto'">X</button>
+	    <h2>Zero Platform</h2>
+		<label class='name' for='one-name'>الاسم</label>
+		<input id='onename' autocomplete='off'>
+		<label class='id' for='one-id'>ال اي دي</label>
+		<input id='oneid' autocomplete='off'>
+		<button class='login-btn add'>Add</button>
+	</div>
+	<div class='premuim'>
+	    <button class='close1' onclick="document.querySelector('.premuim').setAttribute('style','pointer-events: none;opacity: 0;');document.body.style.pointerEvents = 'auto'">X</button>
+	    <h2>النسخة البيريميوم ؟</h2>
+		<p>
+		    .تتيح لك النسخة المدفوعة امان اكثر , ميزات افضل , و بالطبع ذكاء اكثر 
+		</p>
+		<button class='explore'>استكشاف</button>
+		<button class='subscribe'>اشتراك</button>
+	</div>
+	<div class='explorer'>
+	    <button class='close2' onclick="document.querySelector('.explorer').setAttribute('style','pointer-events: none;opacity: 0;');document.body.style.pointerEvents = 'auto'">X</button>
+	    <ul>
+		    <li>AI</li>
+			<li>Security better</li>
+			<li>& Others</li>
+		</ul>
+		<button class='backk'>ارجع</button>
+		<button class='subscribe'>اشتراك</button>
+	</div>
+
+	<script src='script.js'>
+	</script>
+</body>
+</html>

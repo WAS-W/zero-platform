@@ -1,0 +1,16 @@
+{
+"name":"Zero Platform",
+"short_name":"zero",
+"start_url":"/zero_platform",
+"display":"standalone",
+"background_color":"#0d9488",
+"theme_color":"#0d9488",
+"orientation":"portrait",
+"icons" : [
+    {
+	"src":"/zero-platform/icon.png",:sizes":512x512",
+	"type":"image/png",
+	"purpose":"any maskable"
+    }
+]
+}

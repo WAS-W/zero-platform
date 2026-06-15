@@ -174,12 +174,7 @@ const loginCont = document.querySelector('.login')
 		friendChat.style.opacity = '1'
 		friendChat.style.pointerEvents = 'auto'
 	}
-	addFriend.onclick = function () {
-	    friendChat.style.transform = 'scale(1) translate(-50%,-50%)'
-		friendChat.style.opacity = '1'
-		friendChat.style.pointerEvents = 'auto'
-		document.body.setAttribute("style","pointer-events: none;-webcit-backdrop-filter: blur(20px);backdrop-filter: blur(20px);")
-	}
+	addFriend.onclick = function () { adds() }
 	append.onclick = function() {
 	    window.friendName = friendname.value
 		window.friendId = friendid.value
@@ -188,6 +183,7 @@ const loginCont = document.querySelector('.login')
 		chats.push(chatObj)
 		localStorage.setItem('chats',JSON.stringify(chats))
 		friendChat.setAttribute("style", "pointer-events: none;opacity: 0;");
+		document.body.setAttribute("style","pointer-events: auto;-webcit-backdrop-filter: blur(0px);backdrop-filter: blur(0px);")
 		loadChat(window.friendName)
 	}
 	localStorage.setItem('friendsid',JSON.stringify(window.friendId))
@@ -326,14 +322,15 @@ const loginCont = document.querySelector('.login')
 	backk.onclick = function() {
 		document.querySelector('.explorer').setAttribute("style", "pointer-events: none;opacity: 0;transform: translate(-50%,-50%);");
 	}
-	document.body.ondbclick = function() {
+	document.body.ondblclick = function() {
 		let settingsPage = document.createElement('div')
 		settingsPage.setAttribute('style','width: 100%;height: 100%;background: #0a144d;color: beige;pointer-events: auto;opacity: 1;z-index: 99999;display: flex;justify-content: center;align-items: center;flex-direction: column;position: fixed;bottom: 0;')
 		let photo = document.createElement('input')
 		photo.type = 'file'
 		photo.onchange = function() {
 			let realPhoto = photo.value
-			window.circle.style.backgroundImg = `url(${realPhoto})`
+		    alert(`url("${realPhoto}")`)
+			document.querySelector('.circle-photo').style.background = `url("${realPhoto}")`
 		}
 		photo.setAttribute('style','width: 140px;height: 140px;border: 2px dashed beige;border-radius: 50%;')
 		let close3 = document.createElement('button')
@@ -342,6 +339,17 @@ const loginCont = document.querySelector('.login')
 		close3.onclick = function() {
 			settingsPage.setAttribute('style','width: 100%;height: 100%;background: #0a144d;color: beige;pointer-events: none;opacity: 0;z-index: 99999;display: flex;justify-content: center;align-items: center;flex-direction: column;position: fixed;bottom: 0;')
 		}
+		let language = document.createElement('input')
+		language.type = 'text'
+		language.oninput = function() {
+			if( language.value==='english' || language.value === 'English' || language.value === 'US' ) {
+				alert('your lang is english')
+			} else {
+				alert('your lang is arabic')
+			}
+		}
+		language.setAttribute('style','width: 20%;height: 30px;background: #121212;color: beige;pointer-events: auto;opacity: 1;z-index: 99999;position: fixed;bottom: 80%;border-radius: 10px;border: 1px dashed beige;padding: 5px;')
+		settingsPage.appendChild(language)
 		settingsPage.appendChild(close3)
 		settingsPage.appendChild(photo)
 		document.body.appendChild(settingsPage)

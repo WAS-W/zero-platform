@@ -1,31 +1,23 @@
 {
   "name": "Zero Platform",
   "short_name": "Zero",
-  "start_url": "index.html",
-  "scope": "./",
+  "start_url": "/zero-platform/",
+  "scope": "/zero-platform/",
+  "display": "standalone",
+  "theme_color": "#ffd31d",
+  "background_color": "#333333",
   "icons": [
     {
-      "src": "icon(1).png",
+      "src": "/zero-platform/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "icon(2).png",
+      "src": "/zero-platform/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ],
-  "theme_color": "#ffd31d",
-  "background_color": "#333",
-  "display": "standalone",
-  "share_target" : {
-    "action" : "/share",
-	"method" : "GET",
-	"params" : {
-	  "title" : "title",
-	  "text" : "text",
-	  "url" : "url"
-	 }
-  }
+  ]
 }
-
